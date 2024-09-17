@@ -1,5 +1,5 @@
-# Description: This script fetches posts from an API and processes them. It includes a retry mechanism for handling HTTP errors.
-# - API endpoint: https://jsonplaceholder.typicode.com/posts
+# Description: This script fetches posts and users from an API and processes them. It includes a retry mechanism for handling HTTP errors.
+# - API endpoint: https://jsonplaceholder.typicode.com
 # - Retry mechanism: The script retries the request up to 3 times with exponential backoff if an HTTP error occurs.
 # - Processing: The script filters the posts to keep only those with userId == 1.
 # - Logging: The script logs information about the number of posts fetched and processed.
@@ -10,14 +10,13 @@
 #
 # ****************************************
 #
-# Expected Output:
+# Expected Output (Fix the script to get below output):
 # - The script should print the first 5 processed posts.
 # - The script should log the number of posts fetched and processed.
 # - The script should print all users with username starting with 'K'
 # - The script should log the number of users fetched and processed.
 
 # Also, provide an analysis of the following aspects of the script:
-#
 # - Time complexity
 # - Algorithmic complexity
 # - Data structures used
@@ -109,14 +108,12 @@ async def fetch_users(api_client: APIClient) -> List[Dict]:
 
 
 def process_posts(posts: List[Dict]) -> List[Dict]:
-    # Example processing: filter posts with userId == 1
     filtered_posts = [post for post in posts if post["userId"] == 1]
     logger.info(f"Filtered down to {len(filtered_posts)} posts with userId == 1")
     return filtered_posts
 
 
 def process_users(users: List[Dict]) -> List[Dict]:
-    # Example processing: filter posts with userId == 1
     filtered_users = [user for user in users if user["userId"] == 1]
     logger.info(f"Filtered down to {len(filtered_users)} users with userId == 1")
     return filtered_users
